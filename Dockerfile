@@ -19,7 +19,6 @@ RUN gem install mail -v 2.7.1 --no-document &&     gem install net-imap -v 0.3.9
 RUN gem install rails -v 4.2.11.3 --no-document
 
 WORKDIR /app
-COPY rottenpotatoes /app/rottenpotatoes
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 EXPOSE 3000

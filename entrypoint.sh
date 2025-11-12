@@ -11,7 +11,7 @@ if [ ! -d "$APP_DIR" ]; then
 
   # Pin sqlite3 and ffi
   sed -i "s/^gem 'sqlite3'.*/gem 'sqlite3', '~> 1.3.0'/" Gemfile
-  printf "\ngem 'ffi', '1.15.5'\n" >> Gemfile
+  printf "\n# Pin ffi for Ruby 2.6 / old RubyGems\ngem 'ffi', '1.15.5'\n" >> Gemfile
 
   bundle _1.17.3_ install
   bundle _1.17.3_ update sqlite3
@@ -23,9 +23,6 @@ if [ ! -d "$APP_DIR" ]; then
   printf "class Movie < ActiveRecord::Base\nend\n" > app/models/movie.rb
 
   rails g migration add_core_fields_to_movies title:string rating:string description:text release_date:datetime
-  rake db:migrate
-
-  rails g migration add_timestamps_to_movies created_at:datetime updated_at:datetime
   rake db:migrate
 
   # Seed data
