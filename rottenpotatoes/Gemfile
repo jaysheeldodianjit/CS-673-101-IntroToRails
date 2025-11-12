@@ -40,3 +40,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
+# Pin ffi for Ruby 2.6 / old RubyGems
+gem 'ffi', '1.15.5'
+
+
